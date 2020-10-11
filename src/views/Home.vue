@@ -10,12 +10,14 @@
   <div class="home">
     <img alt="Vue logo" src="../assets/logo.png">
   </div>
+  <Counter></Counter>
 </template>
 
 <script>
 // @ is an alias to /src
-
+import Counter from '@/components/Counter'
 export default {
   name: 'Home',
+  components: {Counter}
 }
 </script>
