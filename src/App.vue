@@ -1,11 +1,22 @@
 <template>
   <div id="nav">
-    <router-link to="/">Home</router-link> |
+    {{routers}}
+    <!-- <router-link v-for="item in router" :key="item.name" :to="item.path">Home</router-link> | -->
     <router-link to="/about">About</router-link>
   </div>
   <router-view/>
 </template>
-
+<script>
+import router from './router'
+export default {
+  data(){
+    return {
+      routers: router.routes
+    }
+  }
+  
+}
+</script>
 <style lang="less">
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
