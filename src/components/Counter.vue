@@ -1,3 +1,11 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-10-11 22:48:47
+ * @LastEditTime: 2020-10-30 21:56:04
+ * @LastEditors: your name
+ * @Description: In User Settings Edit
+ * @FilePath: /vue3-demo/src/components/Counter.vue
+-->
 <template>
   <h1>{{counter}}</h1>
   <button class="btn" @click="changeValue(1)">+</button>
@@ -13,6 +21,7 @@
       const changeValue = (num) => {
         counter.value += num
       }
+      
       return {counter, changeValue}
     }
   }

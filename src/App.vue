@@ -1,3 +1,11 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-10-30 21:54:30
+ * @LastEditTime: 2020-11-01 11:26:54
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /vue3-demo/src/App.vue
+-->
 <template>
   <a-layout id="components-layout-demo-top" class="layout">
     <a-layout-header>
@@ -8,13 +16,13 @@
         v-model:selectedKeys="selectedKeys"
         :style="{ lineHeight: '64px' }"
       >
-        <a-menu-item key="1">
+        <a-menu-item key="/">
           <router-link to="/">首页</router-link>
         </a-menu-item>
-        <a-menu-item key="2">
+        <a-menu-item key="/plan">
           <router-link to="/plan">时间计划</router-link>
         </a-menu-item>
-        <a-menu-item key="3">
+        <a-menu-item key="/about">
           <router-link to="/about">关于我们</router-link>
         </a-menu-item>
       </a-menu>
@@ -30,12 +38,30 @@
   </a-layout>
 </template>
 <script>
+import {reactive, toRefs, watch, computed} from 'vue'
+import {useRoute} from 'vue-router'
 export default {
-  data() {
+  setup(){
+    // const status = reactive({
+    //   selectedKeys: ['/'],
+    // })
+    const route = useRoute();
+    console.log('route', route);
+  
+    
+    // watch 监控属性
+    /* watch(() => route.path, (newValue )=> {
+      status.selectedKeys = [newValue]
+    }, {immediate: true}) */
+    const selectedKeys = computed(() => {
+      return [route.path]
+    })
     return {
-      selectedKeys: ['1'],
-    };
+      ...toRefs(status),
+      selectedKeys
+    }
   },
+  
 };
 </script>
 <style>
