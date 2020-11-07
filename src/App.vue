@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-10-30 21:54:30
- * @LastEditTime: 2020-11-01 11:26:54
+ * @LastEditTime: 2020-11-01 13:23:14
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /vue3-demo/src/App.vue
@@ -29,36 +29,45 @@
     </a-layout-header>
     <a-layout-content style="padding: 0 50px">
       <div :style="{ background: '#fff', padding: '24px', minHeight: '280px' }">
-       <router-view></router-view>
+        <a-row>
+          <a-col :span="6">
+            <a-card title="计划总用时：" style="width: 100%">
+              <p>总共假话总时长是：{{allTime}}</p>
+            </a-card>
+          </a-col>
+          <a-col :span="16" offset="2">
+            <router-view></router-view>
+          </a-col>
+        </a-row>
+
+<!--        strore=>allTime: {{allTime}}-->
       </div>
     </a-layout-content>
-    <a-layout-footer style="text-align: center">
-      Ant Design ©2018 Created by Ant UED
-    </a-layout-footer>
+    <a-layout-footer style="text-align: center">Ant Design ©2018 Created by Ant UED</a-layout-footer>
   </a-layout>
 </template>
 <script>
-import {reactive, toRefs, watch, computed} from 'vue'
+import {reactive, toRefs, watch, computed, ref} from 'vue'
 import {useRoute} from 'vue-router'
+import {useStore } from 'vuex'
 export default {
   setup(){
-    // const status = reactive({
-    //   selectedKeys: ['/'],
-    // })
-    const route = useRoute();
-    console.log('route', route);
+     const route = useRoute();
+     const store = useStore();
+    const status = reactive({
+      selectedKeys: computed(_ => [route.path]),
+      allTime: ref(store.getters.allTime)
+    })
+   
+    console.log('route', status.allTime);
   
     
     // watch 监控属性
     /* watch(() => route.path, (newValue )=> {
       status.selectedKeys = [newValue]
     }, {immediate: true}) */
-    const selectedKeys = computed(() => {
-      return [route.path]
-    })
     return {
       ...toRefs(status),
-      selectedKeys
     }
   },
   
