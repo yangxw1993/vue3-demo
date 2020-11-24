@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-10-30 21:54:30
- * @LastEditTime: 2020-11-01 13:23:14
+ * @LastEditTime: 2020-11-24 23:20:24
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /vue3-demo/src/App.vue
@@ -47,9 +47,10 @@
   </a-layout>
 </template>
 <script>
-import {reactive, toRefs, watch, computed, ref} from 'vue'
+import {reactive, toRefs, watch, computed, ref, onMounted} from 'vue'
 import {useRoute} from 'vue-router'
 import {useStore } from 'vuex'
+import {fetchResource} from './utils/request'
 export default {
   setup(){
      const route = useRoute();
@@ -58,7 +59,15 @@ export default {
       selectedKeys: computed(_ => [route.path]),
       allTime: ref(store.getters.allTime)
     })
-   
+    onMounted( () => {
+      
+      fetchResource().then(res => {
+        console.log('res')  
+      })
+    })
+    
+    
+    
     console.log('route', status.allTime);
   
     

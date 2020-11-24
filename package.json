@@ -19,6 +19,7 @@
     "@vue/cli-service": "~4.5.0",
     "@vue/compiler-sfc": "^3.0.0",
     "ant-design-vue": "^2.0.0-beta.10",
+    "axios": "^0.21.0",
     "less": "^3.0.4",
     "less-loader": "^5.0.0",
     "moment": "^2.29.1"
