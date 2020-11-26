@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-10-30 21:54:30
- * @LastEditTime: 2020-11-24 23:20:24
+ * @LastEditTime: 2020-11-26 18:33:28
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /vue3-demo/src/App.vue
@@ -24,6 +24,9 @@
         </a-menu-item>
         <a-menu-item key="/about">
           <router-link to="/about">关于我们</router-link>
+        </a-menu-item>
+        <a-menu-item key="/cart">
+          <router-link to="/cart">购物车</router-link>
         </a-menu-item>
       </a-menu>
     </a-layout-header>
