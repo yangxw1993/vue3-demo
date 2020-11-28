@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-10-30 21:54:30
- * @LastEditTime: 2020-11-26 18:33:28
+ * @LastEditTime: 2020-11-28 21:50:13
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /vue3-demo/src/App.vue
@@ -35,7 +35,7 @@
         <a-row>
           <a-col :span="6">
             <a-card title="计划总用时：" style="width: 100%">
-              <p>总共假话总时长是：{{allTime}}</p>
+              <p>总共假话总时长是：{{ allTime }}</p>
             </a-card>
           </a-col>
           <a-col :span="16" offset="2">
@@ -43,46 +43,43 @@
           </a-col>
         </a-row>
 
-<!--        strore=>allTime: {{allTime}}-->
+        <!--        strore=>allTime: {{allTime}}-->
       </div>
     </a-layout-content>
-    <a-layout-footer style="text-align: center">Ant Design ©2018 Created by Ant UED</a-layout-footer>
+    <a-layout-footer style="text-align: center"
+      >Ant Design ©2018 Created by Ant UED</a-layout-footer
+    >
   </a-layout>
 </template>
 <script>
-import {reactive, toRefs, watch, computed, ref, onMounted} from 'vue'
-import {useRoute} from 'vue-router'
-import {useStore } from 'vuex'
-import {fetchResource} from './utils/request'
+import { reactive, toRefs, watch, computed, ref, onMounted } from "vue";
+import { useRoute } from "vue-router";
+import { useStore } from "vuex";
+import { fetchResource } from "./utils/request";
 export default {
-  setup(){
-     const route = useRoute();
-     const store = useStore();
+  setup() {
+    const route = useRoute();
+    const store = useStore();
     const status = reactive({
-      selectedKeys: computed(_ => [route.path]),
-      allTime: ref(store.getters.allTime)
-    })
-    onMounted( () => {
-      
-      fetchResource().then(res => {
-        console.log('res')  
-      })
-    })
-    
-    
-    
-    console.log('route', status.allTime);
-  
-    
+      selectedKeys: computed((_) => [route.path]),
+      allTime: ref(store.getters.allTime),
+    });
+    onMounted(() => {
+      fetchResource().then((res) => {
+        console.log("res");
+      });
+    });
+
+    console.log("route", status.allTime);
+
     // watch 监控属性
     /* watch(() => route.path, (newValue )=> {
       status.selectedKeys = [newValue]
     }, {immediate: true}) */
     return {
       ...toRefs(status),
-    }
+    };
   },
-  
 };
 </script>
 <style>
