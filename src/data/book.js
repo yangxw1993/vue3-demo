@@ -17,18 +17,18 @@ export default [
 		id: '2',
 		goodsName: 'PHP从入门到放弃',
 		price: 50,
-		count: 1
+		count: 2
 	},
 	{
 		id: '3',
 		goodsName: 'Vue深入浅出',
 		price: 28,
-		count: 1
+		count: 5
 	},
 	{
 		id: '4',
 		goodsName: '图解CSS3',
 		price: 40,
-		count: 1
+		count: 3
 	}
 ]
