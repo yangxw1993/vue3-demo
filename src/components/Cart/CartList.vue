@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-11-28 18:31:27
- * @LastEditTime: 2020-11-29 22:34:39
+ * @LastEditTime: 2020-11-30 00:17:33
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /vue3-demo/src/components/Cart/CartList.vue
@@ -24,15 +24,11 @@
       ¥{{ itemTotalPrice(record.id) }}
     </template>
     <template #action="{ text, record }">
-      <a-popconfirm
-        v-if="books.length"
-        title="Sure to delete?"
-        @confirm="confirmDel(record)"
-        @cancel="cancelDel"
-      >
-        <a>删除 {{ record.id }}</a>
-        <!-- <a href="javascript:;">删除</a> -->
-      </a-popconfirm>
+      <a-button-group>
+        <a-button type="primary" size="small" @click="onModify(record)">修改</a-button>
+        <a-button type="danger" size="small">删除</a-button>
+      </a-button-group>
+      
     </template>
   </a-table>
   <div>总价：¥{{ totalPrice }}</div>
@@ -108,11 +104,15 @@ export default {
     const confirmDel = (item) => {
       store.commit("removeBook", item.id);
     };
+    const onModify = (item) => {      
+      store.dispatch('modifyCart', Object.assign({}, item))
+    };
     return {
       ...toRefs(Status),
       cancelDel,
       confirmDel,
       changeCount,
+      onModify,
     };
   },
 };
