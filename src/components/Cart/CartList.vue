@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-11-28 18:31:27
- * @LastEditTime: 2020-11-29 22:07:24
+ * @LastEditTime: 2020-11-29 22:34:39
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /vue3-demo/src/components/Cart/CartList.vue
@@ -35,9 +35,10 @@
       </a-popconfirm>
     </template>
   </a-table>
-  <div>总价：¥{{ totalPirce }}</div>
+  <div>总价：¥{{ totalPrice }}</div>
 </template>
 <script>
+import { reactive, ref, toRefs, computed } from "vue";
 import { useStore, mapMutations } from "vuex";
 import { PlusOutlined, MinusOutlined} from "@ant-design/icons-vue";
 const columns = [
@@ -76,7 +77,7 @@ const columns = [
     slots: { customRender: "action" },
   },
 ];
-import { reactive, ref, toRefs } from "vue";
+
 export default {
   components: {
 		PlusOutlined,
@@ -84,6 +85,7 @@ export default {
   },
   setup() {
     const store = useStore();
+     
     const Status = reactive({
       columns,
       books: store.state.cart.books,
@@ -91,12 +93,12 @@ export default {
       // 单品总价
       itemTotalPrice: ref(store.getters.cartItemPrice),
       // 总价
-      totalPirce: ref(store.getters.cartTotalPrice),
+      totalPrice: computed( () => store.getters.cartTotalPrice),
     });
+    
     // 改变数量
     const changeCount = (type, record) => {
-			const {id} = record
-      store.commit("changeCartCount", { id, count: type });
+      store.commit("changeCartCount", { id: record.id, count: type });
     };
     // 取消删除
     const cancelDel = (e) => {
