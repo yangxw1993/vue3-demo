@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-11-28 18:31:27
- * @LastEditTime: 2020-11-29 17:48:41
+ * @LastEditTime: 2020-11-29 22:07:24
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /vue3-demo/src/components/Cart/CartList.vue
@@ -86,7 +86,7 @@ export default {
     const store = useStore();
     const Status = reactive({
       columns,
-      books: ref(store.state.books),
+      books: store.state.cart.books,
 
       // 单品总价
       itemTotalPrice: ref(store.getters.cartItemPrice),
@@ -95,7 +95,6 @@ export default {
     });
     // 改变数量
     const changeCount = (type, record) => {
-      console.log("id", type, "count", record);
 			const {id} = record
       store.commit("changeCartCount", { id, count: type });
     };
