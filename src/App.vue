@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-10-30 21:54:30
- * @LastEditTime: 2020-11-28 21:50:13
+ * @LastEditTime: 2020-12-08 17:40:28
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /vue3-demo/src/App.vue
@@ -32,16 +32,14 @@
     </a-layout-header>
     <a-layout-content style="padding: 0 50px">
       <div :style="{ background: '#fff', padding: '24px', minHeight: '280px' }">
-        <a-row>
+        <router-view></router-view>
+        <!-- <a-row>
           <a-col :span="6">
             <a-card title="计划总用时：" style="width: 100%">
               <p>总共假话总时长是：{{ allTime }}</p>
             </a-card>
           </a-col>
-          <a-col :span="16" offset="2">
-            <router-view></router-view>
-          </a-col>
-        </a-row>
+        </a-row> -->
 
         <!--        strore=>allTime: {{allTime}}-->
       </div>
@@ -55,7 +53,9 @@
 import { reactive, toRefs, watch, computed, ref, onMounted } from "vue";
 import { useRoute } from "vue-router";
 import { useStore } from "vuex";
-import { fetchResource } from "./utils/request";
+// import { fetchResource } from "./utils/request";
+import { goodsList } from './service/goods'
+import { fetchResource } from './service/resource'
 export default {
   setup() {
     const route = useRoute();
@@ -68,6 +68,10 @@ export default {
       fetchResource().then((res) => {
         console.log("res");
       });
+      goodsList().then(res => {
+        console.log(res,'goodsList**');
+        
+      })
     });
 
     console.log("route", status.allTime);
