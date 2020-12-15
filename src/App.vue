@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-10-30 21:54:30
- * @LastEditTime: 2020-12-08 17:40:28
+ * @LastEditTime: 2020-12-15 14:31:23
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /vue3-demo/src/App.vue
@@ -16,32 +16,15 @@
         v-model:selectedKeys="selectedKeys"
         :style="{ lineHeight: '64px' }"
       >
-        <a-menu-item key="/">
-          <router-link to="/">首页</router-link>
-        </a-menu-item>
-        <a-menu-item key="/plan">
-          <router-link to="/plan">时间计划</router-link>
-        </a-menu-item>
-        <a-menu-item key="/about">
-          <router-link to="/about">关于我们</router-link>
-        </a-menu-item>
-        <a-menu-item key="/cart">
-          <router-link to="/cart">购物车</router-link>
+        
+        <a-menu-item v-for="item in routes" :key="item.path">
+          <router-link :to="item.path">{{item.name}}</router-link>
         </a-menu-item>
       </a-menu>
     </a-layout-header>
     <a-layout-content style="padding: 0 50px">
       <div :style="{ background: '#fff', padding: '24px', minHeight: '280px' }">
         <router-view></router-view>
-        <!-- <a-row>
-          <a-col :span="6">
-            <a-card title="计划总用时：" style="width: 100%">
-              <p>总共假话总时长是：{{ allTime }}</p>
-            </a-card>
-          </a-col>
-        </a-row> -->
-
-        <!--        strore=>allTime: {{allTime}}-->
       </div>
     </a-layout-content>
     <a-layout-footer style="text-align: center"
@@ -56,12 +39,16 @@ import { useStore } from "vuex";
 // import { fetchResource } from "./utils/request";
 import { goodsList } from './service/goods'
 import { fetchResource } from './service/resource'
+import {router, routes} from './router'
 export default {
   setup() {
     const route = useRoute();
     const store = useStore();
+    // 匹配 路由
+    const routerReg = /\/.*?(?=\/)/;
     const status = reactive({
-      selectedKeys: computed((_) => [route.path]),
+      routes,
+      selectedKeys : computed((_) => [route.path.match(routerReg) ?route.path.match(routerReg)[0]:route.path ]),
       allTime: ref(store.getters.allTime),
     });
     onMounted(() => {
@@ -74,12 +61,10 @@ export default {
       })
     });
 
-    console.log("route", status.allTime);
-
     // watch 监控属性
-    /* watch(() => route.path, (newValue )=> {
-      status.selectedKeys = [newValue]
-    }, {immediate: true}) */
+    // watch(() => route.path, (newValue )=> {
+    //   status.selectedKeys = [newValue]
+    // }, {immediate: true})
     return {
       ...toRefs(status),
     };
@@ -95,3 +80,12 @@ export default {
   float: left;
 }
 </style>
+
+
+
+
+
+
+
+
+

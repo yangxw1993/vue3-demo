@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-10-30 21:54:30
- * @LastEditTime: 2020-11-26 18:28:19
+ * @LastEditTime: 2020-12-14 18:24:39
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /vue3-demo/src/router/index.js
@@ -12,12 +12,12 @@ import Home from '../views/Home/Home.vue'
 const routes = [
   {
     path: '/',
-    name: 'Home',
+    name: '首页',
     component: Home
   },
   {
     path: '/about',
-    name: 'About',
+    name: '关于我们',
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
@@ -25,13 +25,31 @@ const routes = [
   },
   {
     path: '/plan',
-    name: 'Plan',
+    name: '计划时间',
     component: () => import('../views/Plan/')
   },
   {
     path: '/cart',
-    name: 'Cart',
+    name: '购物车',
     component: () => import('../views/Cart/')
+  },
+  {
+    path: '/example',
+    name: '个人案例',
+    component: () => import('../views/Example/Index.vue'),
+    // redirect: '/example/upload',
+    children: [
+      {
+        path: '/example/upload',
+        name: '上传图片',
+        component: () => import('../views/Example/Upload/Index.vue'),
+      },
+      {
+        path: '/example/canvas',
+        name: '八卦',
+        component: () => import('../views/Example/Canvas/Index.vue'),
+      }
+    ]
   }
 ]
 
@@ -39,5 +57,7 @@ const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes
 })
-
-export default router
+export {
+  router,
+  routes
+}
