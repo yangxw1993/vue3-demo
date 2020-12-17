@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-11-26 18:30:43
- * @LastEditTime: 2020-11-29 16:18:16
+ * @LastEditTime: 2020-12-15 15:13:29
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /vue3-demo/src/views/Cart/index.vue
@@ -14,10 +14,19 @@
 </template>
 
 <script>
+import {onMounted} from 'vue'
+import { goodsList } from '../../service/goods'
 import CartList from '@/components/Cart/CartList'
 import AddCart from '@/components/Cart/AddCart'
 export default {
-  components: {CartList, AddCart}
+  components: {CartList, AddCart},
+  setup(){
+    onMounted(() => {
+      goodsList().then(res => {
+        console.log(res,'goodsList**');
+      })
+    });
+  }
 }
 </script>
 

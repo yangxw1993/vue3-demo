@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-10-30 21:54:30
- * @LastEditTime: 2020-12-15 14:31:23
+ * @LastEditTime: 2020-12-15 14:35:02
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /vue3-demo/src/App.vue
@@ -57,7 +57,6 @@ export default {
       });
       goodsList().then(res => {
         console.log(res,'goodsList**');
-        
       })
     });
 

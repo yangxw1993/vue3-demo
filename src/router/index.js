@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-10-30 21:54:30
- * @LastEditTime: 2020-12-14 18:24:39
+ * @LastEditTime: 2020-12-16 23:03:21
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /vue3-demo/src/router/index.js
@@ -48,6 +48,11 @@ const routes = [
         path: '/example/canvas',
         name: '八卦',
         component: () => import('../views/Example/Canvas/Index.vue'),
+      },
+      {
+        path: '/example/line',
+        name: '线条',
+        component: () => import('../views/Example/Canvas/Line.vue'),
       }
     ]
   }
