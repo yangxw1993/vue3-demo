@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-12-14 16:38:45
- * @LastEditTime: 2020-12-14 16:39:37
+ * @LastEditTime: 2020-12-24 18:08:28
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /vue3-demo/src/views/Example/Upload/Index.vue
@@ -16,6 +16,10 @@
       <button class="btn" @click="changeSize(1)">放大</button>
       <button class="btn" @click="changeSize(0)">缩小</button>
       <button class="btn" @click="saveImg">保存图片</button>
+      <button class="btn">
+        上传大文件
+        <input class="input" type="file" ref="maxFile" @change="changeMaxFile" />
+      </button>
     </div>
 
     <div class="img-view" @touchstart="touchstart" @touchmove="touchmove">
@@ -134,6 +138,11 @@
         CTX.clearRect(0,0, canvasSize, canvasSize);
         // console.log(imageWidth, imageHeight );
         CTX.drawImage(myImage, 0, 0, imageWidth, imageHeight )
+      },
+      // 上传大文件
+      changeMaxFile(){
+        let file = this.$refs.maxFile.files[0];
+        console.log(file);
       }
     }
   }
@@ -143,6 +152,7 @@
 .btn-box{
   position: relative;
   .btn{
+    position: relative;
     width: 100px;
     height:40px;
   }
@@ -159,6 +169,8 @@
 }
 .img-view{
   position: relative;
+  width: 400px;
+  height: 400px;
   .mask{
     position: absolute;
     left: 0;

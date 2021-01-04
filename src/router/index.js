@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-10-30 21:54:30
- * @LastEditTime: 2020-12-16 23:03:21
+ * @LastEditTime: 2020-12-29 19:10:52
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /vue3-demo/src/router/index.js
@@ -53,6 +53,16 @@ const routes = [
         path: '/example/line',
         name: '线条',
         component: () => import('../views/Example/Canvas/Line.vue'),
+      },
+      {
+        path: '/example/css3',
+        name: 'CSS3',
+        component: () => import('../views/Example/CSS3/BorderRadius.vue'),
+      },
+      {
+        path: '/example/drag',
+        name: '拖拽',
+        component: () => import('../views/Example/Drag/Drag.vue'),
       }
     ]
   }

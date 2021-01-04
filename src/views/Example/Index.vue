@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-12-08 18:46:07
- * @LastEditTime: 2020-12-14 18:05:40
+ * @LastEditTime: 2020-12-29 19:16:13
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /vue3-demo/src/views/Example/Index.vue
@@ -18,6 +18,7 @@
       </a-list>
     </a-col>
     <a-col :span="18">
+      <h1 class="text-c">个人案例展示</h1>
       <router-view></router-view>
     </a-col>
   </a-row>
