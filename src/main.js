@@ -10,9 +10,11 @@ import { createApp } from 'vue'
 import App from './App.vue'
 import {router} from './router'
 import store from './store'
+// 自定义指令
+import directives from './directives/index'
 import './app.less'
 
 import Antd from 'ant-design-vue';
 import 'ant-design-vue/dist/antd.css';
 
-createApp(App).use(store).use(router).use(Antd).mount('#app')
+createApp(App).use(directives).use(store).use(router).use(Antd).mount('#app')

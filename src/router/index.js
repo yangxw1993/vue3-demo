@@ -63,6 +63,11 @@ const routes = [
         path: '/example/drag',
         name: '拖拽',
         component: () => import('../views/Example/Drag/Drag.vue'),
+      },
+      {
+        path: '/example/high',
+        name: '高阶函数',
+        component: () => import('../views/Example/HighFn/Index.vue'),
       }
     ]
   }
