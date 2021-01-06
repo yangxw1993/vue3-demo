@@ -4,7 +4,6 @@
       v-model:fileList="fileList"
       name="file"
       :multiple="true"
-      action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
       :headers="headers"
       @change="handleChange"
     >
@@ -16,6 +15,14 @@
 <script>
 export default {
   name:'UploadForm',
+  setup(){
+    const handleChange = (file) => {
+      console.log(file)
+    }
+    return{
+      handleChange
+    }
+  }
 }
 </script>
 
