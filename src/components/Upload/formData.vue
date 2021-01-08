@@ -35,7 +35,7 @@ export default {
       fileList.forEach(file => {
         formData.append('files[]', file);
       });
-      status.uploading = true;
+      // status.uploading = true;
       httpRequest({
         url: 'http://localhost:3001/upload/formData',
         method: 'post',
