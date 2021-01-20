@@ -1,18 +1,20 @@
 <!--
  * @Author: your name
  * @Date: 2020-12-24 11:47:48
- * @LastEditTime: 2020-12-28 17:13:09
+ * @LastEditTime: 2021-01-20 19:09:10
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /vue3-demo/src/views/Example/CSS3/BorderRadius.vue
 -->
 <template>
   <div class="flex-start main">
-    <div
+    <!-- <div
       v-for="item in divList"
       :key="item"
       :class="[item, defaultClass]"
-    ></div>
+      @animationstart="animationstart"
+    ></div> -->
+    <div class="cont" @transitionend="transitioned"></div>
   </div>
 </template>
 
@@ -25,9 +27,13 @@ export default {
       // 默认样式
       defaultClass: "box",
     });
+    const transitioned = () => {
+      console.log('animate is end!')
+    };
     
     return {
       ...toRefs(data),
+      transitioned
     };
   },
 };
@@ -60,6 +66,16 @@ export default {
     border-radius: 50%;
     border-top: @width / 10 solid #2842d8;
     animation: rotate 2s linear infinite;
+  }
+  .cont{
+    width: 100px;
+    height: 100px;
+    border: solid 1px #000;
+    transition: 0.3s;
+    &:hover{
+      width: 200px;
+      background: red;
+    }
   }
 }
 @keyframes rotate {
