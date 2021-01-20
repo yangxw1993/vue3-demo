@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "init": "yarn",
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build"
   },
@@ -11,7 +12,8 @@
     "img2html": "^1.0.0",
     "vue": "^3.0.0",
     "vue-router": "^4.0.0-0",
-    "vuex": "^4.0.0-0"
+    "vuex": "^4.0.0-0",
+    "vue-virtual-scroll-list": "^2.3.2"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.0",
@@ -23,7 +25,6 @@
     "axios": "^0.21.0",
     "less": "^3.0.4",
     "less-loader": "^5.0.0",
-    "moment": "^2.29.1",
-    "vue-virtual-scroll-list": "^2.3.2"
+    "moment": "^2.29.1"
   }
 }
