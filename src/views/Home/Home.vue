@@ -1,9 +1,7 @@
 <template>
   <div class="home">
     <Counter />
-    <div class="div-box" @mousedown="mousedown" ref="root">
-      
-    </div>
+    <div class="div-box" data-code="code" ref="root"></div>
   </div>
 </template>
 
@@ -20,23 +18,37 @@ export default {
 
     onMounted(() => {
       // DOM元素将在初始渲染后分配给ref
-      console.log(root.value) // <div>这是根元素</div>
+      // console.log(root.value) // <div>这是根元素</div>
+       const oRoot = root.value;
+      oRoot.addEventListener('mousedown', mousedown);
+      oRoot.addEventListener('mouseup', mouseup,);
     })
+    
+    
+    // 鼠标按下
     const mousedown = (e) => {
-      console.log(e);
+      console.log(e, '***down');
+      root.value.addEventListener('mousemove', mousemove, true)
     };
-
+    // 鼠标移动
+    const mousemove = (e) => {
+      console.log(e, '******move');
+    };
+    // 鼠标抬起
+    const mouseup = (e) => {
+      root.value.removeEventListener('mousemove', mousemove, true)
+      console.log(e, '**up');
+    };
     return {
       root,
-      mousedown
     }
   }
 }
 </script>
 <style lang="less" scoped>
-  .div-box{
-    width: 100%;
-    height: 300px;
-    border: solid 1px red;
-  }
+.div-box {
+  width: 100%;
+  height: 300px;
+  border: solid 1px red;
+}
 </style>
