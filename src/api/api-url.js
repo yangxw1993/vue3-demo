@@ -8,6 +8,7 @@
  */
 const DEV = process.DEV;
 exports.URL = {
-	GOODS_LIST: '/rest/h5Goods/findGoodsList?classifyIds=116889'
+	GOODS_LIST: '/rest/h5Goods/findGoodsList?classifyIds=116889',
+	INIT: '/init'
 }
 

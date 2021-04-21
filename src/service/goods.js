@@ -15,6 +15,20 @@ function goodsList() {
     }).catch(err => reject(new Error(err.message)))
   })
 }
+function init() {
+  return new Promise( (resolve, reject) => {
+    httpRequest({
+      url: URL.INIT,
+      data: {
+        channel: '1'
+      },
+      method: 'post'
+    }).then(res => {
+      res.code === 0 ? resolve(res.data) :  reject(new Error(res.msg))
+    }).catch(err => reject(new Error(err.message)))
+  })
+}
 export {
-  goodsList
+  goodsList,
+  init
 }

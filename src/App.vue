@@ -37,7 +37,7 @@ import { reactive, toRefs, watch, computed, ref, onMounted } from "vue";
 import { useRoute } from "vue-router";
 import { useStore } from "vuex";
 // import { fetchResource } from "./utils/request";
-import { goodsList } from './service/goods'
+import { goodsList, init } from './service/goods'
 import { fetchResource } from './service/resource'
 import {router, routes} from './router'
 export default {
@@ -57,6 +57,9 @@ export default {
       });
       goodsList().then(res => {
         console.log(res,'goodsList**');
+      })
+      init().then(res => {
+
       })
     });
 
