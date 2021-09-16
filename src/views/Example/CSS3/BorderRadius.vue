@@ -8,13 +8,13 @@
 -->
 <template>
   <div class="flex-start main">
-    <!-- <div
+    <div
       v-for="item in divList"
       :key="item"
       :class="[item, defaultClass]"
       @animationstart="animationstart"
-    ></div> -->
-    <div class="cont" @transitionend="transitioned"></div>
+    ></div>
+    <div class="cont" @transitionend="transitioned($event)"></div>
   </div>
 </template>
 
@@ -27,7 +27,9 @@ export default {
       // 默认样式
       defaultClass: "box",
     });
-    const transitioned = () => {
+    const transitioned = (e) => {
+      // 执行两次是因为改变了两个属性 background-color width
+      console.log(e.propertyName);
       console.log('animate is end!')
     };
     
