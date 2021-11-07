@@ -1,14 +1,14 @@
 <!--
  * @Author: your name
  * @Date: 2020-11-28 18:31:27
- * @LastEditTime: 2021-01-22 16:28:27
+ * @LastEditTime: 2021-01-27 22:37:31
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /vue3-demo/src/components/Cart/CartList.vue
 -->
 <template>
   <a-table :columns="columns" :data-source="books" rowKey="id">
-    <template #count="{ text, record }">
+    <template #count="{ record }">
       <a-button-group>
         <a-button type="primary" size="small" @click="changeCount(-1, record)">
           <template #icon> <MinusOutlined /> </template>
@@ -19,11 +19,11 @@
         </a-button>
       </a-button-group>
     </template>
-    <template #price="{ text, record }"> ¥{{ record.price }} </template>
-    <template #totalPrice="{ text, record }">
+    <template #price="{ record }"> ¥{{ record.price }} </template>
+    <template #totalPrice="{ record }">
       ¥{{ itemTotalPrice(record.id) }}
     </template>
-    <template #action="{ text, record }">
+    <template #action="{  record }">
       <a-button-group>
         <a-button type="primary" size="small" @click="onModify(record)">修改</a-button>
         <a-button type="danger" size="small">删除</a-button>

@@ -28,7 +28,9 @@
       </div>
     </a-layout-content>
     <a-layout-footer style="text-align: center"
-      >Ant Design ©2018 Created by Ant UED</a-layout-footer
+      >Ant Design ©2018 Created by Ant UED
+      <p>本站仅供学习使用，不用做商业用途。</p>
+      </a-layout-footer
     >
   </a-layout>
 </template>
